@@ -17,7 +17,7 @@ def post_list(request):
     context = {
         'posts': posts
     }
-    return render(request, 'index.html', context)
+    return render(request, 'blog/pages/blog.html', context)
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
