@@ -1,0 +1,88 @@
+{% extends "pages/base.html" %}
+
+{% block content %}
+
+<!-- CabeÃ§alho -->
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder">ConheÃ§a nossos serviÃ§os jurÃ­dicos!</h1>
+            <p>Agende agora uma consulta e tenha o suporte jurÃ­dico que vocÃª precisa.</p>
+            <a class="btn btn-primary" href="#">Agendar consulta</a>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <!-- Blog entries-->
+        <div class="col-md-8">
+            {% for post in post_list %}
+            <!-- Featured blog post-->
+            <div class="card mb-4">
+                <a href="{% url 'post_detail' post.slug %}"><img class="card-img-top"
+                        src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..."></a>
+                <div class="card-body">
+                    <div class="small text-muted">{{ post.created_on }}</div>
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text">{{ post.description }}</p>
+                    <a class="btn btn-primary" href="{% url 'post_detail' post.slug %}">Read more &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Side widgets-->
+        <div class="col-md-4">
+            <!-- Search widget-->
+            <div class="card mb-4">
+                <div class="card-header">Search</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Enter search term..."
+                            aria-label="Enter search term..." aria-describedby="button-search">
+                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories widget-->
+            <div class="card mb-4">
+                <div class="card-header">Categories</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#!">Web Design</a></li>
+                                <li><a href="#!">HTML</a></li>
+                                <li><a href="#!">Freebies</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#!">JavaScript</a></li>
+                                <li><a href="#!">CSS</a></li>
+                                <li><a href="#!">Tutorials</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pagination-->
+        <nav id="paginacao" class="mt-4">
+            {% if is_paginated and page_obj.paginator.num_pages > 1 %}
+            <nav aria-label="Page navigation container">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a></li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </nav>
+    </div>
+</div>
+
+{% endblock %}
