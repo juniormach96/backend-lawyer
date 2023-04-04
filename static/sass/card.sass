@@ -1,0 +1,35 @@
+@import "./colors.sass"
+@import "./text.sass"
+
+.serviceBox 
+    color: $primary
+    background: linear-gradient(to right bottom, $white, $gray-100)
+    //font-family: 'Roboto', sans-serif
+    text-align: center
+    //padding: 50px 0 0
+    //border-radius: 20px
+    box-shadow: 0 0 15px $gray-500, 0 0 0 5px $white inset
+    position: relative
+
+
+.serviceBox:before 
+    content: ""
+    background: $primary
+    width: calc(100% - 55px)
+    height: 6px
+    transform: translateX(-50%)
+    position: absolute
+    top: 0
+    left: 50%
+
+
+.serviceBox .description
+    @include description
+
+
+.service-icon 
+    color: $primary
+    line-height: 70px
+    width: 70px
+    height: 70px
+    border-radius: 10px 30px 10px 10px

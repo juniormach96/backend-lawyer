@@ -1,5 +1,5 @@
-{% extends "blog/pages/base.html" %} {% block content %}
-<div class="container">
+{% extends "global/pages/base.html" %} {% block content %}
+<section class="container p-3" style="min-height: 83.9vh;">
     <div class="row">
         <!-- Blog entries-->
         <div class="col-md-8">
@@ -16,42 +16,7 @@
             </div>
             {% endfor %}
         </div>
-        <!-- Side widgets-->
-        <div class="col-md-4">
-            <!-- Search widget-->
-            <div class="card mb-4">
-                <div class="card-header">Search</div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search">
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Categories widget-->
-            <div class="card mb-4">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Web Design</a></li>
-                                <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">Freebies</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">JavaScript</a></li>
-                                <li><a href="#!">CSS</a></li>
-                                <li><a href="#!">Tutorials</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       {% include 'blog/partials/side_widgets.html' %} 
         <!-- Pagination-->
         <nav id="paginacao" class="mt-4">
             {% if is_paginated and page_obj.paginator.num_pages > 1 %}
@@ -67,6 +32,6 @@
             {% endif %}
         </nav>
     </div>
-</div>
+</section>
 
 {% endblock %}
